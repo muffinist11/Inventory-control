@@ -38,4 +38,14 @@ class Form extends CI_Controller {
 	{
 		$this->load->view('adminlogin');
 	}
+
+
+	public function registar()
+	{
+		$this->load->view('registar');
+	}
+
+	
+
+
 }
