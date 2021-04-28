@@ -17,50 +17,51 @@
     </head>
 
     <body class="hold-transition login-page">
-    <div class="login-box">
-    <div class="login-logo">
-        <img src="../img/giaicon.png" alt="ログインロゴ" style="width: 250px; height: 110px;">
-    </div>
-    <!-- /.login-logo -->
-    <div class="card">
-        <div class="card-body login-card-body">
-        <p class="login-box-msg">サインイン</p>
-        <p><a href="/form/adminlogin">管理者はこちら</a></p>
+        <div class="login-box">
+            <div class="login-logo">
+                <img src="../img/giaicon.png" alt="ログインロゴ" style="width: 250px; height: 110px;">
+            </div>
+        <!-- /.login-logo -->
+        <div class="card">
+            <div class="card-body login-card-body">
+            <p class="login-box-msg">サインイン</p>
+            <p><a href="/form/adminlogin">管理者はこちら</a></p>
 
-        <form action="" method="post">
-            <div class="input-group mb-3">
-            <input type="email" class="form-control" placeholder="user id">
-            <div class="input-group-append">
-                <div class="input-group-text">
-                <span class="fas fa-address-card"></span>
+            <form action="" method="post">
+                <div class="input-group mb-3">
+                <input type="email" class="form-control" placeholder="user id">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                        <span class="fas fa-address-card"></span>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            </div>
-            <div class="input-group mb-3">
-            <input type="password" class="form-control" placeholder="Password">
-            <div class="input-group-append">
-                <div class="input-group-text">
-                <span class="fas fa-lock"></span>
+
+                <div class="input-group mb-3">
+                <input type="password" class="form-control" placeholder="Password">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                        <span class="fas fa-lock"></span>
+                        </div>
+                    </div>
                 </div>
+                <!-- /.col -->
+                <div class="col-4">
+                    <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                </div>
+                <!-- /.col -->
+            </form>
             </div>
-            </div>
-            <!-- /.col -->
-            <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
-            </div>
-            <!-- /.col -->
-        </form>
+            <!-- /.login-card-body -->
         </div>
-        <!-- /.login-card-body -->
-    </div>
-    </div>
-    <!-- /.login-box -->
+        </div>
+        <!-- /.login-box -->
 
-    <!-- jQuery -->
-    <script src="../plugins/jquery/jquery.min.js"></script>
-    <!-- Bootstrap 4 -->
-    <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- AdminLTE App -->
-    <script src="../dist/js/adminlte.min.js"></script>
+        <!-- jQuery -->
+        <script src="../plugins/jquery/jquery.min.js"></script>
+        <!-- Bootstrap 4 -->
+        <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- AdminLTE App -->
+        <script src="../dist/js/adminlte.min.js"></script>
     </body>
 </html>
