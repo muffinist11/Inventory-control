@@ -3,22 +3,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Form extends CI_Controller {
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see https://codeigniter.com/userguide3/general/urls.html
-	 */
-
 	public function __construct()
     {
         // CI_Model constructor の呼び出し
@@ -33,6 +17,56 @@ class Form extends CI_Controller {
 	{
 		$this->load->view('login');
 	}
+
+	public function admin_page()
+	{
+		$this->load->view('admin_page');
+	}
+
+	public function admin_check()
+	{
+		// header("Content-Type: application/json; charset=utf-8");
+
+		// if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+
+		//   if (empty($this->input->post('user', true))) {
+		// 	header('HTTP/1.1 401 Unauthorized');
+		// 	echo json_encode(['message' => 'userが間違っています']);
+		// 	exit();
+		//   }
+
+		//   if (empty($this->input->post('pass', true))) {
+		// 	header('HTTP/1.1 401 Unauthorized');
+		// 	echo json_encode(['message' => 'パスワードが間違っています']);
+		// 	exit();
+		//   }
+
+		$user = $this->input->post('user',true);
+		$pass = $this->input->post('pass',true);
+		
+		
+		$this->Form_model->log_get($user);
+		$this->load->model('Form_model');
+
+		$master = $this->Form_model->log_get($user);
+		
+
+
+		if($master['id'] !== 1 && $master['pass'] !== $pass){
+		// header('HTTP/1.1 401 Unauthorized');
+		// echo json_encode(['message' => 'パスワードが間違っています']);
+		// exit();
+		header("Location: /form/adminlogin");
+	} else {
+		header("Location: /form/admin_page");
+		}
+	
+	// } else {
+	//   header('HTTP/1.1 405 Method Not Allowed');
+	//   echo json_encode(['message' => '許可されていないメソッドです']);             
+	}
+
+
 
 	public function adminlogin()
 	{
@@ -99,8 +133,6 @@ class Form extends CI_Controller {
 		}
 
 		
-
-
 		if(empty($error)){
 			$clean = array();
 			foreach( $_POST as $key => $value ) {
@@ -137,6 +169,15 @@ class Form extends CI_Controller {
 			$this->load->view('touroku');
 		}
 	}
+
+	public function users_edit()
+	{
+		$this->Form_model->table_row();
+
+		$data['result'] = $this->Form_model->table_row();
+		$this->load->view('users_edit',$data);
+	}
+
 
 
 
