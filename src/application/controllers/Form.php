@@ -23,6 +23,31 @@ class Form extends CI_Controller {
 		$this->load->view('admin_page');
 	}
 
+
+	public function login_check()
+
+
+	{
+		$user = $this->input->post('user',true);
+		$pass = $this->input->post('pass',true);
+		
+		
+		$this->Form_model->log_get($user);
+		$this->load->model('Form_model');
+
+		$loguser = $this->Form_model->log_get($user);
+		
+
+
+		if($loguser['pass'] !== $pass){
+
+		header("Location: /form/index");
+		} else {
+		// header("ユーザーページ");
+		}         
+	}
+
+
 	public function admin_check()
 	{
 		// header("Content-Type: application/json; charset=utf-8");
@@ -52,7 +77,7 @@ class Form extends CI_Controller {
 		
 
 
-		if($master['id'] !== 1 && $master['pass'] !== $pass){
+		if($master['pass'] !== $pass){
 		// header('HTTP/1.1 401 Unauthorized');
 		// echo json_encode(['message' => 'パスワードが間違っています']);
 		// exit();
@@ -176,6 +201,64 @@ class Form extends CI_Controller {
 
 		$data['result'] = $this->Form_model->table_row();
 		$this->load->view('users_edit',$data);
+
+	}
+
+	public function edit(){
+			
+		$id = $this->input->post('id');
+		$user_name = $this->input->post('uesr_name');
+		$user = $this->input->post('user');
+		$name = $this->input->post('pass');
+
+
+		if(!empty($this->input->post('btn_submit'))){
+			$this->load->view('edit');
+		}
+
+		if (!empty($this->input->post('change'))){
+
+		$user_name = @$this->input->post('user_name');
+		$user = @$this->input->post('user');
+		$pass = @$this->input->post('pass');
+		$updated_at = date("Y-m-d H:i:s");
+
+		$data = [
+			'user_name' => $user_name,
+			'user' => $user,
+			'pass' => $pass,
+			'updated_at' => $updated_at
+		];
+
+		$this->Form_model->update_row($id,$data);
+
+		header('location:/form/users_edit');
+		
+		}
+
+		if (!empty($this->input->post('delete'))){
+
+			$user_name = @$this->input->post('user_name');
+			$user = @$this->input->post('user');
+			$pass = @$this->input->post('pass');
+
+			$data = [
+				'user_name' => $user_name,
+				'user' => $user,
+				'pass' => $pass,
+			];
+
+			$this->Form_model->delete_row($id,$data);
+
+			header('location:/form/users_edit');
+			
+			}
+
+
+		if(!empty($this->input->post('back'))){
+			header('location:/form/users_edit');
+		}
+		
 	}
 
 

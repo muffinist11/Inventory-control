@@ -25,4 +25,20 @@ class Form_model extends CI_Model
         return $res;
     }
 
+    public function update_row($id,$data){
+
+        $this->load->database();
+
+        return $this->db->where('id', $id)
+                ->update('users', $data);
+    }
+
+    public function delete_row($id){
+        $this->load->database();
+        return $this->db->where('id', $id)
+            ->delete('users');
+    }
+
+    
+
 }

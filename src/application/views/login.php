@@ -27,9 +27,9 @@
             <p class="login-box-msg">サインイン</p>
             <p><a href="/form/adminlogin">管理者はこちら</a></p>
 
-            <form action="" method="post">
+            <form action="/form/login_check" method="post">
                 <div class="input-group mb-3">
-                <input type="email" class="form-control" placeholder="user id">
+                <input type="text" class="form-control" placeholder="user id" name="user">
                     <div class="input-group-append">
                         <div class="input-group-text">
                         <span class="fas fa-address-card"></span>
@@ -38,7 +38,7 @@
                 </div>
 
                 <div class="input-group mb-3">
-                <input type="password" class="form-control" placeholder="Password">
+                <input type="password" class="form-control" placeholder="Password" name="pass">
                     <div class="input-group-append">
                         <div class="input-group-text">
                         <span class="fas fa-lock"></span>

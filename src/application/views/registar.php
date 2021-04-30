@@ -135,7 +135,7 @@
             <!-- /.col -->
                     </div>
                 </form>
-                <a href="" class="text-center">管理画面に戻る</a>
+                <a href="/form/admin_page" class="text-center">管理画面に戻る</a>
             </div>
         <!-- /.form-box -->
     </div><!-- /.card -->

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AdminLTE 3 | Simple Tables</title>
+<title>ユーザー管理画面</title>
 
 <!-- Google Font: Source Sans Pro -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -13,8 +13,10 @@
 <link rel="stylesheet" href="../dist/css/adminlte.min.css">
 <style>
     .input-group{
-        text-align:center;
+        
+        margin:0 auto;
     }
+
     .card{
         margin:0 auto;
     }
@@ -53,6 +55,7 @@
                     </div>                   
                 </section>
             </div>
+            
         </section>
 
 
@@ -74,26 +77,25 @@
                             </tr>
                             </thead>
                                 <tbody>
-                                    <?php $num = count($result);?>
-                                    <?php for($i=0; $i<$num; $i++) { ?>
-                                <tr class="target-area">
-                                    <td><?= $result[$i]['id']?></td>
-                                    <td><?= $result[$i]['user_name']?></td>
-                                    <td><?= $result[$i]['user']?></td>
-                                    <td><?= $result[$i]['pass']?></td>
+                                <?php foreach ($result as $value) {?>
+                                    <tr class="target-area">
 
-                                    <td>
-                                    
-                                    <form action="edit" method="post">
-                                    <input type="submit" name="btn_submit" class="btn btn-app bg-danger" value="編集">
-                                    <!-- <i class="fas fa-user-edit"></i> -->
-                                        <input type="hidden" name="id" value="<?php echo $result[$i]['id']; ?>">
-                                        <input type="hidden" name="name" value="<?php echo $result[$i]['user_name']; ?>">
-                                        <input type="hidden" name="tel" value="<?php echo $result[$i]['user']; ?>">
-                                        <input type="hidden" name="mail" value="<?php echo $result[$i]['pass']; ?>">
-                                    </form>
-                                
-                                    </td>
+                                        <td><?= $value['id']?></td>
+                                        <td><?= $value['user_name']?></td>
+                                        <td><?= $value['user']?></td>
+                                        <td><?= $value['pass']?></td>
+
+                                        <td>
+                                        <form action="edit" method="post">
+                                        <input type="submit" name="btn_submit" class="btn btn-app bg-danger" value="編集">
+                                        <!-- <i class="fas fa-user-edit"></i> -->
+                                            <input type="hidden" name="id" value="<?= $value['id']; ?>">
+                                            <input type="hidden" name="user_name" value="<?= $value['user_name']; ?>">
+                                            <input type="hidden" name="user" value="<?= $value['user']; ?>">
+                                            <input type="hidden" name="pass" value="<?= $value['pass']; ?>">
+                                        </form>                              
+                                        </td>
+
                                 </tr>
                                 <?php } ?>
                                 </tbody>
@@ -101,7 +103,7 @@
                         </div>
                 <!-- /.card-body -->
 
-                <!-- ページネーション -->
+ 
                         <div class=" clearfix">
                         <ul class="pagination pagination-sm m-0 float-right">
                             <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>

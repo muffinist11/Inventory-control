@@ -24,7 +24,7 @@
 <!-- /.login-logo -->
 <div class="card">
     <div class="card-body login-card-body">
-    <p class="login-box-msg">サインイン</p>
+    <p class="login-box-msg">管理者サインイン</p>
     <p><a href="http://zaikoadmin/">戻る</a></p>
 
     <form action="admin_check" method="post">
