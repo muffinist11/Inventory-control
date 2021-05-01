@@ -70,6 +70,7 @@ class Form extends CI_Controller {
 		$pass = $this->input->post('pass',true);
 		
 		
+		
 		$this->Form_model->log_get($user);
 		$this->load->model('Form_model');
 
@@ -135,7 +136,7 @@ class Form extends CI_Controller {
 	
 		if(empty($user_name)) {
 			$error[] = "「氏名」は必ず入力してください";
-			} elseif( 20 < mb_strlen($name)) {
+			} elseif( 20 < mb_strlen($user_name)) {
 			$error[] = "「氏名は20文字以内で入力してください」";
 			} 
 		
@@ -200,6 +201,24 @@ class Form extends CI_Controller {
 		$this->Form_model->table_row();
 
 		$data['result'] = $this->Form_model->table_row();
+
+		// pagination
+		$this->load->library('pagination');
+		$config['base_url'] = "/form/users_edit";
+		$config['total_rows'] = $this->Form_model->page_row();
+		$config['per_page'] = 4;
+		$config ['prev_tag_open'] = '<li class="page-item"><div class="page-link">';
+		$config ['prev_tag_close'] = '</div></li>';
+		$config ['cur_tag_open'] = '<li class="page-item"><div class="page-link">';
+		$config ['cur_tag_close'] = '</div></li>';
+		$config ['num_tag_open'] = '<li class="page-item"><div class="page-link">';
+		$config ['num_tag_close'] = '</div></li>';
+		$config ['next_tag_open'] = '<li class="page-item"><div class="page-link">';
+		$config ['next_tag_close'] = '</div></li>';
+
+
+		$this->pagination->initialize($config);
+
 		$this->load->view('users_edit',$data);
 
 	}
@@ -209,7 +228,7 @@ class Form extends CI_Controller {
 		$id = $this->input->post('id');
 		$user_name = $this->input->post('uesr_name');
 		$user = $this->input->post('user');
-		$name = $this->input->post('pass');
+		$pass = $this->input->post('pass');
 
 
 		if(!empty($this->input->post('btn_submit'))){
