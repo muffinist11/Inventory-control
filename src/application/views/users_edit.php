@@ -8,9 +8,9 @@
 <!-- Google Font: Source Sans Pro -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
 <!-- Font Awesome -->
-<link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
+<link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
 <!-- Theme style -->
-<link rel="stylesheet" href="../dist/css/adminlte.min.css">
+<link rel="stylesheet" href="../../dist/css/adminlte.min.css">
 <style>
     .input-group{
         
@@ -86,7 +86,7 @@
                                         <td><?= $value['pass']?></td>
 
                                         <td>
-                                        <form action="edit" method="post">
+                                        <form action="/form/edit" method="post">
                                         <input type="submit" name="btn_submit" class="btn btn-app bg-danger" value="編集">
                                         <!-- <i class="fas fa-user-edit"></i> -->
                                             <input type="hidden" name="id" value="<?= $value['id']; ?>">
@@ -100,19 +100,13 @@
                                 <?php } ?>
                                 </tbody>
                             </table>
+                            <div class="pagination　clearfix">
+                                <ul class="pagination pagination-sm m-0 float-right">
+                                    <?php echo $this->pagination->create_links(); ?> 
+                                </ul>
+                            </div>
                         </div>
                 <!-- /.card-body -->
-
- 
-                        <div class=" clearfix">
-                        <ul class="pagination pagination-sm m-0 float-right">
-                            <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
-                        </ul>
-                        </div>
                     </div>
                 <!-- /.card -->
                 </div>
@@ -126,11 +120,11 @@
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-<script src="../plugins/jquery/jquery.min.js"></script>
+<script src="../../plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
-<script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
-<script src="../dist/js/adminlte.min.js"></script>
+<script src="../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script>
     'use strict'
