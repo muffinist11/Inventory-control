@@ -21,8 +21,15 @@ class Form_model extends CI_Model
     public function table_row(){
         $this->load->database();
         $query = $this->db->query('SELECT id,user_name,user,pass FROM users');
+        $query = $this->db->get('users',4,$this->uri->segment(3));
         $res = $query->result('array');
         return $res;
+    }
+
+    public function page_row(){
+        $this->load->database();
+        $query = $this->db->get("users");
+        return $query->num_rows();
     }
 
     public function update_row($id,$data){
@@ -38,6 +45,7 @@ class Form_model extends CI_Model
         return $this->db->where('id', $id)
             ->delete('users');
     }
+
 
     
 
