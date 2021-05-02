@@ -10,7 +10,6 @@ class Form extends CI_Controller {
         $this->load->library('session');
         $this->load->model('Form_model');
         date_default_timezone_set('Asia/Tokyo');
-        
     }
 
 	public function index()
@@ -69,24 +68,22 @@ class Form extends CI_Controller {
 		$user = $this->input->post('user',true);
 		$pass = $this->input->post('pass',true);
 		
+		define("USER",$user);
+		define("PASS",$pass);
 		
-		
-		$this->Form_model->log_get($user);
+		$this->Form_model->admin_get();
 		$this->load->model('Form_model');
 
-		$master = $this->Form_model->log_get($user);
-		
+		$data['result'] = $this->Form_model->admin_get();
 
-
-		if($master['pass'] !== $pass){
+		if($data['result'][0]['user'] === USER && $data['result'][0]['pass'] === PASS){
 		// header('HTTP/1.1 401 Unauthorized');
 		// echo json_encode(['message' => 'パスワードが間違っています']);
 		// exit();
-		header("Location: /form/adminlogin");
-	} else {
 		header("Location: /form/admin_page");
+	} else {
+		header("Location: /form/adminlogin");
 		}
-	
 	// } else {
 	//   header('HTTP/1.1 405 Method Not Allowed');
 	//   echo json_encode(['message' => '許可されていないメソッドです']);             
@@ -204,9 +201,9 @@ class Form extends CI_Controller {
 
 		// pagination
 		$this->load->library('pagination');
-		$config['base_url'] = "/form/users_edit";
-		$config['total_rows'] = $this->Form_model->page_row();
-		$config['per_page'] = 4;
+		$config ['base_url'] = "/form/users_edit";
+		$config ['total_rows'] = $this->Form_model->page_row();
+		$config ['per_page'] = 4;
 		$config ['prev_tag_open'] = '<li class="page-item"><div class="page-link">';
 		$config ['prev_tag_close'] = '</div></li>';
 		$config ['cur_tag_open'] = '<li class="page-item"><div class="page-link">';

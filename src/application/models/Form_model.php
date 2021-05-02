@@ -18,6 +18,14 @@ class Form_model extends CI_Model
     return $query->row_array();
     }
 
+    public function admin_get()
+    {
+    $this->load->database();
+    $query = $this->db->query('SELECT user,pass FROM users WHERE id=1');
+    $ad = $query->result('array');
+    return $ad;
+    }
+
     public function table_row(){
         $this->load->database();
         $query = $this->db->query('SELECT id,user_name,user,pass FROM users');
