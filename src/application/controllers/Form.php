@@ -23,7 +23,7 @@ class Form extends CI_Controller {
 		if($_SERVER['REQUEST_METHOD'] === 'POST') {
 			$this->load->view('admin_page');
 		} else {
-			exit('Invalid request');
+			header('HTTP/1.1 401 Unauthorized');
 		}
 	}
 
@@ -54,21 +54,6 @@ class Form extends CI_Controller {
 
 	public function admin_check()
 	{
-		// header("Content-Type: application/json; charset=utf-8");
-
-		// if ($_SERVER['REQUEST_METHOD'] === 'POST'){
-
-		//   if (empty($this->input->post('user', true))) {
-		// 	header('HTTP/1.1 401 Unauthorized');
-		// 	echo json_encode(['message' => 'userが間違っています']);
-		// 	exit();
-		//   }
-
-		//   if (empty($this->input->post('pass', true))) {
-		// 	header('HTTP/1.1 401 Unauthorized');
-		// 	echo json_encode(['message' => 'パスワードが間違っています']);
-		// 	exit();
-		//   }
 		if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 
 		$user = $this->input->post('user',true);
@@ -88,16 +73,12 @@ class Form extends CI_Controller {
 		}
 
 		if($adminuser === USER && $adminpass === PASS){
-		// header('HTTP/1.1 401 Unauthorized');
-		// echo json_encode(['message' => 'パスワードが間違っています']);
-		// exit();
 		$this->load->view('admin_page');
 	} else {
 		header("Location: /form/adminlogin");
 		}
 	} else {
-		exit('Invalid request');
-		// echo json_encode(['message' => '許可されていないメソッドです']);             
+		header('HTTP/1.1 401 Unauthorized');        
 	}
 
 	}
