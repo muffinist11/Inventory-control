@@ -126,6 +126,11 @@ class Form extends CI_Controller {
 		$pass = @$this->input->post('pass',true) ?:null;
 		$compass = @$this->input->post('compass',true) ?:null;
 
+		$this->Form_model->log_get($user);
+		$this->load->model('Form_model');
+
+		$loguser = $this->Form_model->log_get($user);
+
 		
 		$error = null;
 		$clean = null;
@@ -141,19 +146,23 @@ class Form extends CI_Controller {
 			$error[] = "「ユーザーid」は必ず入力してください";
 			} elseif(6 > mb_strlen($user))  {
 			$error[] = "「ユーザーidは6桁以上で入力してください」";
-			} 
+			} elseif($loguser['user'] == $user) {
+				$error[] = "このユーザーIDは使われています";
+			};
+		
 
 		if(empty($pass)) {
 			$error[] = "「パスワード」は必ず入力してください";
 			} elseif(6 > mb_strlen($pass)) {
 			$error[] = "「パスワード」は６桁以上で入力してください";
-			}
+			} 
+		
 
 		if(empty($compass)) {
 			$error[] = "「パスワード確認」は必ず入力してください";
 			} elseif($compass !== $pass) {
 			$error[] = "「パスワード」と「確認パスワード」が一致しません";
-		}
+		    }
 
 		
 		if(empty($error)){
@@ -264,7 +273,7 @@ class Form extends CI_Controller {
 				'pass' => $pass,
 			];
 
-			$this->Form_model->delete_row($id,$data);
+			$this->Form_model->delete_row($id);
 
 			header('location:/form/users_edit');
 			
