@@ -130,12 +130,19 @@
 
                     <div class="row">
                     <div class="col-4">
-                        <button type="submit" class="btn btn-primary btn-block" name="btn_submit">登録</button>
+                        <button type="submit" class="btn btn-primary" name="btn_submit">登録</button>
                     </div>
             <!-- /.col -->
                     </div>
                 </form>
-                <a href="/form/admin_page" class="text-center">管理画面に戻る</a>
+                <br>
+                <form action="/form/admin_page" method="post">
+                <div class="row">
+                <div class="col-4">
+                    <button type="submit" class="btn btn-primary" name="btn_submit">戻る</button>
+                </div>  
+                </div>  
+                </form>
             </div>
         <!-- /.form-box -->
     </div><!-- /.card -->
