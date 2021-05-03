@@ -29,6 +29,7 @@ class Form_model extends CI_Model
     public function table_row(){
         $this->load->database();
         $query = $this->db->query('SELECT id,user_name,user,pass FROM users');
+        $query = $this->db->where('delete_flag',0);
         $query = $this->db->get('users',4,$this->uri->segment(3));
         $res = $query->result('array');
         return $res;
@@ -50,10 +51,10 @@ class Form_model extends CI_Model
 
     public function delete_row($id){
         $this->load->database();
-        return $this->db->where('id', $id)
-            ->delete('users');
+        $this->db->where('id', $id);
+        $this->db->update('users',array('delete_flag' => 1));
+            
     }
-
 
     
 
