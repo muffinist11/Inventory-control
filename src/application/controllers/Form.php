@@ -74,9 +74,14 @@ class Form extends CI_Controller {
 		$this->Form_model->admin_get();
 		$this->load->model('Form_model');
 
-		$data['result'] = $this->Form_model->admin_get();
+		$data = $this->Form_model->admin_get();
 
-		if($data['result'][0]['user'] === USER && $data['result'][0]['pass'] === PASS){
+		foreach($data as $value){
+			$adminuser = $value['user'];
+			$adminpass = $value['pass'];
+		}
+
+		if($adminuser === USER && $adminpass === PASS){
 		// header('HTTP/1.1 401 Unauthorized');
 		// echo json_encode(['message' => 'パスワードが間違っています']);
 		// exit();
@@ -273,7 +278,7 @@ class Form extends CI_Controller {
 				'pass' => $pass,
 			];
 
-			$this->Form_model->delete_row($id);
+			$this->Form_model->delete_row($id,$data);
 
 			header('location:/form/users_edit');
 			
