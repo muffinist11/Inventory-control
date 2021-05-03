@@ -18,8 +18,13 @@ class Form extends CI_Controller {
 	}
 
 	public function admin_page()
-	{
-		$this->load->view('admin_page');
+	{	
+		
+		if($_SERVER['REQUEST_METHOD'] === 'POST') {
+			$this->load->view('admin_page');
+		} else {
+			exit('Invalid request');
+		}
 	}
 
 
@@ -64,6 +69,7 @@ class Form extends CI_Controller {
 		// 	echo json_encode(['message' => 'パスワードが間違っています']);
 		// 	exit();
 		//   }
+		if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 
 		$user = $this->input->post('user',true);
 		$pass = $this->input->post('pass',true);
@@ -85,13 +91,15 @@ class Form extends CI_Controller {
 		// header('HTTP/1.1 401 Unauthorized');
 		// echo json_encode(['message' => 'パスワードが間違っています']);
 		// exit();
-		header("Location: /form/admin_page");
+		$this->load->view('admin_page');
 	} else {
 		header("Location: /form/adminlogin");
 		}
-	// } else {
-	//   header('HTTP/1.1 405 Method Not Allowed');
-	//   echo json_encode(['message' => '許可されていないメソッドです']);             
+	} else {
+		exit('Invalid request');
+		// echo json_encode(['message' => '許可されていないメソッドです']);             
+	}
+
 	}
 
 
