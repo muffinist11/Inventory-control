@@ -35,7 +35,9 @@
                     </div>
                     <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="/form/admin_page">Home</a></li>
+                        <form action="/form/admin_page" method="post">
+                        <li class="breadcrumb-item"><input class="btn" type="submit" name="back" value="戻る"></li>
+                        </form>
                     </ol>
                     </div>
                 </div>
@@ -78,6 +80,7 @@
                             </thead>
                                 <tbody>
                                 <?php foreach ($result as $value) {?>
+
                                     <tr class="target-area">
 
                                         <td><?= $value['id']?></td>
