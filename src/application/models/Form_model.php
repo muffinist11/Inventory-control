@@ -52,8 +52,7 @@ class Form_model extends CI_Model
     public function delete_row($id){
         $this->load->database();
         $this->db->where('id', $id);
-        $this->db->update('users',array('delete_flag' => 1));
-            
+        $this->db->update('users',array('delete_flag' => 1));           
     }
 
     
