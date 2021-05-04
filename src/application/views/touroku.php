@@ -27,7 +27,7 @@
             <div class="card">
                 ok
             </div>
-            <form action="/form/admin_page">
+            <form action="/form/admin_page" method="post">
                     <input type="submit" class="btn btn-info" value="戻る">
                 </form>
         </div>
