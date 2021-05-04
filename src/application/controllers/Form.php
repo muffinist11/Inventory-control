@@ -47,6 +47,7 @@ class Form extends CI_Controller {
 
 		header("Location: /form/index");
 		} else {
+		// 丹下さんカテゴリページ
 		// header("ユーザーページ");
 		}         
 	}
