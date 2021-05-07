@@ -94,34 +94,36 @@ class Form extends CI_Controller {
 
 		if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 
-		$this->load->library('session');
-		$user = $this->input->post('user',true);
-		$pass = $this->input->post('pass',true);
-		$_SESSION = $_POST;
-		
-		$user = $_SESSION['user'];
-		$pass = $_SESSION['pass'];
-		define("USER",$user);
-		define("PASS",$pass);
-		
-		$this->Form_model->admin_get();
-		$this->load->model('Form_model');
+			$this->load->library('session');
+			$user = $this->input->post('user',true);
+			$pass = $this->input->post('pass',true);
+			$_SESSION = $_POST;
+			
+			$user = $_SESSION['user'];
+			$pass = $_SESSION['pass'];
+			define("USER",$user);
+			define("PASS",$pass);
+			
+			$this->Form_model->admin_get();
+			$this->load->model('Form_model');
 
-		$data = $this->Form_model->admin_get();
+			$data = $this->Form_model->admin_get();
 
-		foreach($data as $value){
-			$adminuser = $value['user'];
-			$adminpass = $value['pass'];
+			foreach($data as $value){
+				$adminuser = $value['user'];
+				$adminpass = $value['pass'];
+			}
+
+			if($adminuser === USER && $adminpass === PASS){
+			header("Location: /form/admin_page");
+
+			} else {
+				header("Location: /form/adminlogin");
+			}
+			
+		} else {
+			header('HTTP/1.1 401 Unauthorized');        
 		}
-
-		if($adminuser === USER && $adminpass === PASS){
-		header("Location: /form/admin_page");
-	} else {
-		header("Location: /form/adminlogin");
-		}
-	} else {
-		header('HTTP/1.1 401 Unauthorized');        
-	}
 
 	}
 
