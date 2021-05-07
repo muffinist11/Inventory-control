@@ -28,13 +28,13 @@
                     <a class="btn btn-app bg-secondary" href="">
                         <i class="fas fa-barcode"></i> Categories
                     </a>
-                    <a class="btn btn-app bg-success" href="/form/registar">
+                    <a class="btn btn-app bg-success" href="registar">
                         <i class="fas fa-user-plus"></i> Add user
                     </a>
                     <a class="btn btn-app bg-danger" href="users_edit">
                         <i class="fas fa-user-edit"></i> Users edit
                     </a>
-                    <a class="btn btn-app bg-info" href="/form">
+                    <a class="btn btn-app bg-info" href="logout">
                         <i class="fas fa-sign-out-alt"></i> Log out
                     </a>       
                     <!-- /.col -->
