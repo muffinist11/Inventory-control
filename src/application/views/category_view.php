@@ -27,12 +27,26 @@
             <section class="content-header">
                 <div class="container-fluid">
                     <div class="row mb-2">
-                        <div class="col-sm-6">
+                        <div class="col-sm-12">
                             <h1>カテゴリー検索</h1>
                         </div>
-                        <div class="col-sm-6" style="display:flex; text-align: left;">
+                        <div style="text-align: center; margin:auto; width:100%;">
+                            <?php if (!empty($success_message)) : ?>
+                                <ul style="color: blue;">
+                                    <p><?php echo $success_message; ?></p>
+                                </ul>
+                            <?php endif; ?>
+                            <?php if (!empty($error_message)) : ?>
+                                <ul style="color: red; " class="error_message">
+                                    <?php foreach ((array)$error_message as $message) : ?>
+                                        <li><?php echo $message ?></li>
+                                    <?php endforeach; ?>
+                                </ul>
+                            <?php endif; ?>
+                        </div>
+                        <div class="col-sm-6" style="display:flex; margin:auto; /*text-align: left*/;">
                             <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item "><a style="background: #17A2B8; color: #FFFFFF; text-align:center; font-weight: bolder;"  class="btn btn-app btn-info" href="/Category/add_category">追加</a></li>
+                                <li class="breadcrumb-item "><a style="background: #17A2B8; color: #FFFFFF; text-align:center; font-weight: bolder;" class="btn btn-app btn-info" href="/Category/add_category">追加</a></li>
                             </ol>
                             <a class="btn btn-app bg-info" href="/form">
                                 <i class="fas fa-sign-out-alt"></i> Log out
@@ -42,45 +56,47 @@
                 </div><!-- /.container-fluid -->
             </section>
             <!-- Main content -->
-            <form action="" method="post">
-                <section class="content">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="card">
-                                    <!-- /.card-header -->
-                                    <div class="card-body">
-                                        <table style="width: 800px" id="example1" class="table table-bordered table-striped">
-                                            <thead>
-                                                <tr>
-                                                    <th style="width: 40%">種類</th>
-                                                    <th style="width: 60%">操作</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>在庫</td>
-                                                    <td>
-                                                        <input class="btn btn-primary btn-sm" type="submit" name="fix" value="選択">
-                                                        <input class="btn btn-primary btn-sm" type="submit" name="delete" value="削除">
-                                                    </td>
-                                                </tr>
-                                               
-
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <!-- /.card-body -->
+            <section class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <!-- /.card-header -->
+                                <div class="card-body">
+                                    <table style="width: 800px" id="example1" class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th style="width: 40%">種類</th>
+                                                <th style="width: 60%">操作</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php if (!empty($category_name)) : ?>
+                                                <?php foreach ($category_name as $value) : ?>
+                                                    <tr>
+                                                        <td>
+                                                            <?php echo $value['category']; ?>
+                                                        </td>
+                                                        <td>
+                                                            <a class="btn btn-primary btn-sm" href="#">選択</a>
+                                                            <a class="btn btn-primary btn-sm" href="/category/category_delete?category_id=<?php echo $value['id']; ?>">削除</a>
+                                                        </td>
+                                                    </tr>
+                                                <?php endforeach; ?>
+                                            <?php endif; ?>
+                                        </tbody>
+                                    </table>
                                 </div>
-                                <!-- /.card -->
+                                <!-- /.card-body -->
                             </div>
-                            <!-- /.col -->
+                            <!-- /.card -->
                         </div>
-                        <!-- /.row -->
+                        <!-- /.col -->
                     </div>
-                    <!-- /.container-fluid -->
-                </section>
-            </form>
+                    <!-- /.row -->
+                </div>
+                <!-- /.container-fluid -->
+            </section>
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->

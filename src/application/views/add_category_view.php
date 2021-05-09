@@ -37,11 +37,11 @@
                                 </p>
                             <?php endif; ?>
                             <?php if (!empty($error_message)) : ?>
+                                <?php foreach($error_message as $value):?>
                                 <ul style="color: red; " class="error_message">
-                                    <?php foreach ($error_message as $message) : ?>
-                                        <li><?php echo $message ?></li>
-                                    <?php endforeach; ?>
+                                        <li><?php echo $value; ?></li>
                                 </ul>
+                                <?php endforeach;?>
                             <?php endif; ?>
                         </div>
                     </div>
@@ -56,7 +56,7 @@
                                 <div class="card">
                                     <input style="width: 500px" type="text" name="category" placeholder="追加">
                                     <div class="card-body">
-                                        <a href="/category" class="btn btn-primary btn-sm">戻る</a>
+                                        <a href="/category" class="btn btn-primary btn-sm" name="btn_back">戻る</a>
                                         <input class="btn btn-primary btn-sm" name="btn_add" type="submit" value="追加">
                                     </div>
                                 </div>
