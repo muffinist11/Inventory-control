@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Categorys
-    </title>
+    <title>Category_add</title>
     <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
     <!-- DataTables -->
@@ -29,12 +28,27 @@
                         <div class="col-sm-6">
                             <h1>カテゴリー追加</h1>
                         </div>
+                        <div>
+                            <?php if (!empty($success_message)) : ?>
+                                <p class="success_message">
+                                    <ul style="color: blue;">
+                                        <li><?php echo $success_message; ?></li>
+                                    </ul>
+                                </p>
+                            <?php endif; ?>
+                            <?php if (!empty($error_message)) : ?>
+                                <?php foreach($error_message as $value):?>
+                                <ul style="color: red; " class="error_message">
+                                        <li><?php echo $value; ?></li>
+                                </ul>
+                                <?php endforeach;?>
+                            <?php endif; ?>
+                        </div>
                     </div>
                 </div><!-- /.container-fluid -->
             </section>
             <!-- Main content -->
-            <!-- フォーム アクション先未定-->
-            <form action="" method="post">
+            <form action="/Category/add_category" method="post">
                 <section class="content">
                     <div class="container-fluid">
                         <div class="row">
@@ -42,8 +56,8 @@
                                 <div class="card">
                                     <input style="width: 500px" type="text" name="category" placeholder="追加">
                                     <div class="card-body">
-                                        <input type="submit" name="btn_back" value="戻る">
-                                        <input type="submit" name="btn_add" value="追加">
+                                        <a href="/category" class="btn btn-primary btn-sm" name="btn_back">戻る</a>
+                                        <input class="btn btn-primary btn-sm" name="btn_add" type="submit" value="追加">
                                     </div>
                                 </div>
                                 <!-- /.card -->
@@ -89,9 +103,11 @@
     <script src="../dist/js/demo.js"></script>
     <!-- Page specific script -->
     <script>
-        $(function () {
+        $(function() {
             $("#example1").DataTable({
-                "responsive": true, "lengthChange": false, "autoWidth": false,
+                "responsive": true,
+                "lengthChange": false,
+                "autoWidth": false,
                 "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
             }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
             $('#example2').DataTable({
