@@ -59,6 +59,7 @@ class Form extends CI_Controller {
 
 		if($loguser['pass'] !== $pass){
 
+
 		header("Location: /form/index");
 		} else {
 		// 丹下さんカテゴリページ
