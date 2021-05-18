@@ -45,10 +45,14 @@ class Form extends CI_Controller {
 
 		if($loguser['pass'] !== $pass){
 
+
 		header("Location: /form/index");
 		} else {
 		// 丹下さんカテゴリページ
 		// header("ユーザーページ");
+		// print_r($loguser);
+		$_SESSION['user_id'] = $loguser;
+		$this->load->view('category_view');
 		}         
 	}
 
