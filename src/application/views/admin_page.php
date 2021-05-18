@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Inventory Control</title>
 
+<link rel="shortcut icon" href="../img/favicon.ico">
 <!-- Google Font: Source Sans Pro -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
 <!-- Font Awesome -->
@@ -28,13 +29,13 @@
                     <a class="btn btn-app bg-secondary" href="/form/category">
                         <i class="fas fa-barcode"></i> Categories
                     </a>
-                    <a class="btn btn-app bg-success" href="/form/registar">
+                    <a class="btn btn-app bg-success" href="registar">
                         <i class="fas fa-user-plus"></i> Add user
                     </a>
                     <a class="btn btn-app bg-danger" href="users_edit">
                         <i class="fas fa-user-edit"></i> Users edit
                     </a>
-                    <a class="btn btn-app bg-info" href="/form">
+                    <a class="btn btn-app bg-info" href="logout">
                         <i class="fas fa-sign-out-alt"></i> Log out
                     </a>       
                     <!-- /.col -->
