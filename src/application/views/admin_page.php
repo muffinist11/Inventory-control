@@ -24,8 +24,8 @@
         <div class="card-body login-card-body">
             <p class="login-box-msg">Master Page</p>
             <form action="" method="post">
-                <!-- 丹下さん　hrefにカテゴリ用ページに遷移するようにhtmlを挿入 -->
-                    <a class="btn btn-app bg-secondary" href="">
+                <!-- 丹下さんhrefにカテゴリ用ページに遷移するようにhtmlを挿入 -->
+                    <a class="btn btn-app bg-secondary" href="/form/category">
                         <i class="fas fa-barcode"></i> Categories
                     </a>
                     <a class="btn btn-app bg-success" href="/form/registar">
