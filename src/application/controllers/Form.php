@@ -41,7 +41,7 @@ class Form extends CI_Controller {
 
 		$loguser = $this->Form_model->log_get($user);
 		
-
+	
 
 		if($loguser['pass'] !== $pass){
 
@@ -50,10 +50,10 @@ class Form extends CI_Controller {
 		} else {
 		// 丹下さんカテゴリページ
 		// header("ユーザーページ");
-		// print_r($loguser);
-		$_SESSION['user_id'] = $loguser;
-		$this->load->view('category_view');
-		}         
+	 $_SESSION['loguser'] = $loguser['user'];
+		header("Location: /Category");
+		exit;
+	}         
 	}
 
 
@@ -284,11 +284,5 @@ class Form extends CI_Controller {
 		}
 		
 	}
-
-
-
-
 	
-
-
 }
