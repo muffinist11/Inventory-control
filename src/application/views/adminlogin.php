@@ -7,6 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Inventory Control</title>
 
+<link rel="shortcut icon" href="../img/favicon.ico">
 <!-- Google Font: Source Sans Pro -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
 <!-- Font Awesome -->
@@ -30,7 +31,7 @@
     <form action="admin_check" method="post">
         <!-- 管理者かの確認 -->
         <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="master id" name="user">
+        <input type="text" class="form-control" placeholder="master id" name="user" required="required">
         <div class="input-group-append">
             <div class="input-group-text">
                 <i class="fas fa-user-cog"></i>
@@ -38,7 +39,7 @@
         </div>
         </div>
         <div class="input-group mb-3">
-        <input type="password" class="form-control" placeholder="Password" name="pass">
+        <input type="password" class="form-control" placeholder="Password" name="pass" required="required">
         <div class="input-group-append">
             <div class="input-group-text">
             <span class="fas fa-lock"></span>

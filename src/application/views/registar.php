@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Inventory Control</title>
 
+    <link rel="shortcut icon" href="../img/favicon.ico">
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
@@ -93,7 +94,7 @@
                 <form action="/form/validation" method="post">
 
                     <div class="input-group mb-3">
-                    <input type="text" name="user_name" class="form-control" placeholder="Full name">
+                    <input type="text" name="user_name" class="form-control" placeholder="Full name" required="required">
                         <div class="input-group-append">
                             <div class="input-group-text">
                             <span class="fas fa-user"></span>
@@ -102,7 +103,7 @@
                     </div>
 
                     <div class="input-group mb-3">
-                    <input type="text" name="user" class="form-control" placeholder="User id">
+                    <input type="text" name="user" class="form-control" placeholder="User id" required="required">
                         <div class="input-group-append">
                             <div class="input-group-text">
                             <span class="fas fa-address-card"></span>
@@ -111,7 +112,7 @@
                     </div>
 
                     <div class="input-group mb-3">
-                    <input type="password" name="pass"  class="form-control" placeholder="Password">
+                    <input type="password" name="pass"  class="form-control" placeholder="Password" required="required">
                         <div class="input-group-append">
                             <div class="input-group-text">
                             <span class="fas fa-lock"></span>
@@ -120,7 +121,7 @@
                     </div>
 
                     <div class="input-group mb-3">
-                    <input type="password" name="compass" class="form-control" placeholder="Retype password">
+                    <input type="password" name="compass" class="form-control" placeholder="Retype password" required="required">
                         <div class="input-group-append">
                             <div class="input-group-text">
                             <span class="fas fa-lock"></span>
