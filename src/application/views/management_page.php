@@ -33,9 +33,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <a href="" class="">ログアウト</a>
     </div>
   </nav>
-  
 
-  <!-- サイドバー -->
+  <?php include('side.php'); ?>
+  <!--
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <a href="" class="brand-link">
       <span class="brand-text font-weight-light">カテゴリー</span>
@@ -62,7 +62,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </ul>
         </nav>
       </div>
-  </aside>
+  </aside> -->
 
   <!-- body --> 
     <div class="content-wrapper">
@@ -76,7 +76,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <input type="search" class="form-control" data-table="table" placeholder="検索">
           </div>
           <div class="text-right ml-auto">
+            <form action="/management/additional_page" method="post">
             <button type="submit" class="btn btn-primary">新規追加</button>
+            </form>
           </div>
         </div>
       </div>
@@ -96,30 +98,25 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>イス</td>
-            <td>10</td>
-            <td>2F</td>
-            <td>20.4.1</td>
-            <td>20.4.1</td>
-            <td><button type="button" class="btn btn-primary">詳細・編集</button></td>
-          </tr>
-          <tr>
-            <td>加湿器</td>
-            <td>2</td>
-            <td>1F倉庫</td>
-            <td>20.12.1</td>
-            <td>20.12.1</td>
-            <td><button type="button" class="btn btn-primary">詳細・編集</button></td>
-          </tr>
-            <tr>
-              <td>つくえ</td>
-              <td>５</td>
-              <td>2F</td>
-              <td>20.7.1</td>
-              <td>20.7.1</td>
-              <td><button type="button" class="btn btn-primary">詳細・編集</button></td>
-            </tr>
+            <?php foreach ($result as $value) {?>
+            <tr class="target-area">
+              <td><?= $value['title']?></td>
+              <td><?= $value['num']?></td>
+              <td><?= $value['place']?></td>
+              <td><?= $value['pc']?></td>
+              <td><?= $value['updated_at']?></td>
+              <td>
+                <form action="/management/detail_page" method="post">
+                <button type="submit" class="btn btn-primary">詳細・編集</button>
+                    <input type="hidden" name="title" value="<?= $value['title']; ?>">
+                    <input type="hidden" name="num" value="<?= $value['num']; ?>">
+                    <input type="hidden" name="place" value="<?= $value['place']; ?>">
+                    <input type="hidden" name="pc" value="<?= $value['pc']; ?>">
+                    <input type="hidden" name="etc" value="<?= $value['etc']; ?>">
+                </form>                        
+              </td>
+              </tr>
+              <?php } ?>
         </tbody>
       </table>
     </div>
