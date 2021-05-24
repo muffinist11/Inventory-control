@@ -18,21 +18,25 @@ scratch. This page gets rid of all links and provides the needed markup only.
 </head>
 <body class="hold-transition management_page">
 <div class="wrapper">
-
 <div class="card-body">
+<!--戻る-->
+  <div class="row">
+  <a href="index">戻る</a>
+  </div>
+<!--追加-->  
 　<div class="card card-primary">
     <div class="card-header">
       <h3 class="card-title">新規登録</h3>
     </div>
-    <form action="/management/db_add" method="post">
+    <form action="/Management/db_add" method="post">
       <div class="card-body">
         <div class="form-group">
           <label for="">名前</label>
-          <input type="text" class="form-control" name="title">
+          <input type="text" class="form-control" name="title" required>
         </div>
         <div class="form-group">
           <label for="">数量</label>
-          <input type="number" class="form-control" name="num">
+          <input type="number" class="form-control" name="num" required>
         </div>
         <div class="form-group">
           <label for="">保存場所</label>
@@ -46,17 +50,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <label for="Textarea">備考</label>
           <textarea class="form-control" id="Textarea" rows="5" name="etc"></textarea>
           <div class="invalid-feedback"></div>
+        </div> 
+      <div class="text-center">
+      <div class="index">
+        <button type="submit" class="btn btn-primary" name="btn_submit">新規登録</button>
       </div>
     </form>
-    <div class="text-center">
-      <form action="db_add" method="post">
-        <button type="submit" class="btn btn-primary" name="btn_submit">新規登録</button>
-      </form>
-      <form action="index">
-          <button type="submit" class="btn btn-primary" name="btn_submit">戻る</button>
-      </form>
-    </div>  
   </div>
+</div>
 </div>
 
 <!-- jQuery -->

@@ -98,38 +98,25 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </tr>
         </thead>
         <tbody>
-          <!--<tr>
-            <td>イス</td>
-            <td>10</td>
-            <td>2F</td>
-            <td>20.4.1</td>
-            <td>20.4.1</td>
-            <td>
-              <form action="/management/detail_page" method="post">
-                <button type="submit" class="btn btn-primary">詳細・編集</button>
-              </form>
-            </td>
-            </tr>-->
             <?php foreach ($result as $value) {?>
             <tr class="target-area">
               <td><?= $value['title']?></td>
               <td><?= $value['num']?></td>
               <td><?= $value['place']?></td>
               <td><?= $value['pc']?></td>
-              <td><?= $value['etc']?></td>
+              <td><?= $value['updated_at']?></td>
               <td>
                 <form action="/management/detail_page" method="post">
                 <button type="submit" class="btn btn-primary">詳細・編集</button>
-                    <!-- <i class="fas fa-user-edit"></i> -->
                     <input type="hidden" name="title" value="<?= $value['title']; ?>">
                     <input type="hidden" name="num" value="<?= $value['num']; ?>">
                     <input type="hidden" name="place" value="<?= $value['place']; ?>">
                     <input type="hidden" name="pc" value="<?= $value['pc']; ?>">
                     <input type="hidden" name="etc" value="<?= $value['etc']; ?>">
-                </form>                              
+                </form>                        
               </td>
+              </tr>
               <?php } ?>
-            </tr>
         </tbody>
       </table>
     </div>

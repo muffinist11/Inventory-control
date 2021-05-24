@@ -1,23 +1,38 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Management_model extends CI_Moel
+class Management_model extends CI_Model
 {
-    public function management_row($data)
+    public function __construct()
     {
-    $this->load->database();
-    return $this->db->insert('stocks',$data);
-    }
-    public function table_row(){
+        //parent:: __construct();
         $this->load->database();
-        $query = $this->db->query('SELECT id,title,num,place,pc,etc FROM stocks');
-        $query = $this->db->where('delete_flag',0);
-        /*$query = $this->db->get('users',4,$this->uri->segment(3));*/
-        $res = $query->result('array');
-        return $res;
+    }
+//データベースに登録
+    public function insert_row($data)
+    {
+        $this->db->insert('stocks', $data);
+    }
+//登録データの取得
+    public function fetch_all_rows($limit = null){
+        !empty($limit) ? $this->db->limit($limit) : false;
+        return $this->db->order_by('updated_at', 'ASC')
+        ->get('stocks')
+        ->result_array();
+    }
+//指定されたIDの取得
+    public function fetch_one_row($id){
+        return $this->db->where('id', $id)
+        ->select('id','title','num','place','pc','ett')
+        ->get('stocks')
+        ->row_array();
+    }
+    //指定されたIDの削除
+    public function delete_row($id)
+    {
+        return $this->db->where('id', $id)
+        ->delete('stocks');
     }
 }
-
-
 
 ?>

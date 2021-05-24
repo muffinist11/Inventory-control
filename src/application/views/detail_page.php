@@ -16,49 +16,53 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Theme style -->
   <link rel="stylesheet" href="../dist/css/adminlte.min.css">
 </head>
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition management_page">
 <div class="wrapper">
-
 <div class="card-body">
+<!--戻る-->
+    <div class="row">
+    <p><a href="index">戻る</a></p>
+    </div>
+<!--編集-->     
     <div class="card card-primary">
         <div class="card-header">
             <h3 class="card-title">編集・詳細</h3>
         </div>
-    <form>
+        <form>
         <div class="card-body">
             <div class="form-group">
                 <label for="">名前</label>
-                <input type="text" class="form-control" id="" placeholder="">
+                <input type="text" class="form-control" name="title" value="<?php if(!empty($_POST['title'])){echo $_POST['title'];}?>">
             </div>
             <div>
                 <label for="">数量</label>
-                    <div class="input-group mb-3">
-                        <input type="number" class="form-control" placeholder="" aria-label="" aria-describedby="">
-                        <div class="input-group-append">
-                            <button class="btn btn-primary" type="button" id="button-addon2">変更</button>
-                        </div>
+                <div class="input-group mb-3">
+                <input type="number" class="form-control" name="num" value="<?php if(!empty($_POST['num'])){echo $_POST['num'];}?>">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="button" id="button-addon2">変更</button>
                     </div>
+                </div>
             </div>
             <div class="form-group">
                 <label for="">保存場所</label>
-                <input type="text" class="form-control" id="" placeholder="">
+                <input type="text" class="form-control" name="place" value="<?php if(!empty($_POST['place'])){echo $_POST['place'];}?>">
             </div>
             <div class="form-group">
                 <label for="">購入日</label>
-                <input type="date" class="form-control" id="" placeholder="">
+                <input type="date" class="form-control" name="pc" value="<?php if(!empty($_POST['pc'])){echo $_POST['pc'];}?>">
             </div>
             <div class="form-group pb-3">
                 <label for="Textarea">備考</label>
-                <textarea class="form-control" id="Textarea" rows="5" placeholder=""></textarea>
+                <textarea class="form-control" id="Textarea" rows="5" name="etc" value=""><?php if(!empty($_POST['etc'])){echo $_POST['etc'];}?></textarea>
                 <div class="invalid-feedback"></div>
             </div>
             <div class="text-center">
-                <button type="submit" class="btn btn-primary">戻る</button>
                 <button type="submit" class="btn btn-primary">編集登録</button>
-                <button type="submit" class="btn btn-primary">削除</button>
+                <button type="submit" class="btn btn-danger">削除</button>
             </div>
         </form>
     </div>
+</div>
 </div>
 
 <!-- jQuery -->
