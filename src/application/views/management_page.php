@@ -108,6 +108,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <td>
                 <form action="/management/detail_page" method="post">
                 <button type="submit" class="btn btn-primary">詳細・編集</button>
+                    <input type="hidden" name="id" value="<?= $value['id']; ?>">
                     <input type="hidden" name="title" value="<?= $value['title']; ?>">
                     <input type="hidden" name="num" value="<?= $value['num']; ?>">
                     <input type="hidden" name="place" value="<?= $value['place']; ?>">

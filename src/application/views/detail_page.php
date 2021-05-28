@@ -16,7 +16,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Theme style -->
   <link rel="stylesheet" href="../dist/css/adminlte.min.css">
 </head>
-<body class="hold-transition management_page">
+<body class="hold-transition detail_page">
 <div class="wrapper">
 <div class="card-body">
 <!--戻る-->
@@ -28,8 +28,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <div class="card-header">
             <h3 class="card-title">編集・詳細</h3>
         </div>
-        <form>
+        <form action="/Management/update_row" method="post">
         <div class="card-body">
+            <div><?php //if(!empty($_POST['id'])){echo $_POST['id'];}?></div>
             <div class="form-group">
                 <label for="">名前</label>
                 <input type="text" class="form-control" name="title" value="<?php if(!empty($_POST['title'])){echo $_POST['title'];}?>">
@@ -56,9 +57,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <textarea class="form-control" id="Textarea" rows="5" name="etc" value=""><?php if(!empty($_POST['etc'])){echo $_POST['etc'];}?></textarea>
                 <div class="invalid-feedback"></div>
             </div>
+            <input type="hidden" name="id" value="<?= $_POST['id']; ?>">
             <div class="text-center">
-                <button type="submit" class="btn btn-primary">編集登録</button>
-                <button type="submit" class="btn btn-danger">削除</button>
+                <input type="submit" name="change" class="btn btn-primary" value="編集登録">
+                <input type="submit" name="delete" class="btn btn-danger"  value="削除">
+                <!--<input type="hidden" name="stock_id" value="<?php echo $stocks['id']; ?>">-->
             </div>
         </form>
     </div>
