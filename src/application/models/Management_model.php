@@ -20,18 +20,23 @@ class Management_model extends CI_Model
         ->get('stocks')
         ->result_array();
     }
+//登録データの編集・更新
+    public function update_row($data){
+    $this->load->database();
+    return $this->db->where('id', $data['id'])->update('stocks', $data);
+}
+
 //指定されたIDの取得
-    public function fetch_one_row($id){
-        return $this->db->where('id', $id)
-        ->select('id','title','num','place','pc','ett')
+    public function fetch_one_row($data){
+        return $this->db->where('id', $data['id'])
+        ->select('id')
         ->get('stocks')
         ->row_array();
     }
     //指定されたIDの削除
     public function delete_row($id)
     {
-        return $this->db->where('id', $id)
-        ->delete('stocks');
+        return $this->db->where('id', $id)->delete('stocks');
     }
 }
 

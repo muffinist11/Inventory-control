@@ -16,7 +16,7 @@ class Management extends CI_Controller
    public function index()
   {
     $data = null;
-    // データベースから値をすべて持ってくる
+  // データベースから値をすべて持ってくる
     $data['result'] = $this->Management_model->fetch_all_rows();
      // VIEWに$dataを渡す
     $this->load->view('management_page', $data);
@@ -27,7 +27,7 @@ class Management extends CI_Controller
    {
     $this->load->view('additional_page');
    }
-   //データベースに追加
+  //データベースに追加
    public function db_add()
    {
      //$category_id = 
@@ -52,16 +52,49 @@ class Management extends CI_Controller
     
     $this->Management_model->insert_row($data);
     $this->index();
-    
+
    }
 
-   //編集・詳細
+  //編集・詳細画面
    public function detail_page()
    {
     $this->load->view('detail_page');
    }
+  //編集を更新
+    public function update_row()
+    {
+      if (!empty($this->input->post('change'))){
+      $id = $this->input->post('id');
+      //'category_id' = 
+      $title = $this->input->post('title', true);
+      $num = $this->input->post('num', true);
+      $place = $this->input->post('place', true);
+      $pc = $this->input->post('pc', true);
+      $etc = $this->input->post('etc', true);
+      $created_at = $this->input->post('created_at', true);
+      $updated_at = $this->input->post('updated_at', true);
 
+			$data = [
+        'id' => $id,
+        //'category_id' = 
+        'title' => $title,
+        'num' => $num,
+        'place' => $place,
+        'pc' => $pc,
+        'etc' => $etc,
+        'created_at' => date("Y-m-d H:i:s"), 
+        'updated_at' => date("Y-m-d H:i:s") 
+      ];
+      $this->Management_model->update_row($data);
+			$this->index();
+    }
+  //削除項目の選択・削除
+    if ($this->input->post('delete')){
+        $id = $this->input->post('id');
+        $this->Management_model->delete_row($id);
+        $this->index();
+    }
   }
-
+}
 
 ?>
