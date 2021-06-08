@@ -49,14 +49,11 @@ class Form extends CI_Controller {
 		$user = $this->input->post('user',true);
 		$pass = $this->input->post('pass',true);
 		
-		
 		$this->Form_model->log_get($user);
 		$this->load->model('Form_model');
 
 		$loguser = $this->Form_model->log_get($user);
 		
-	
-
 		if($loguser['pass'] !== $pass){
 
 
@@ -83,8 +80,6 @@ class Form extends CI_Controller {
 			
 			$user = $_SESSION['user'];
 			$pass = $_SESSION['pass'];
-			define("USER",$user);
-			define("PASS",$pass);
 			
 			$this->Form_model->admin_get();
 			$this->load->model('Form_model');
@@ -96,7 +91,7 @@ class Form extends CI_Controller {
 				$adminpass = $value['pass'];
 			}
 
-			if($adminuser === USER && $adminpass === PASS){
+			if($adminuser === $user && $adminpass === $pass){
 			header("Location: /form/admin_page");
 
 			} else {
@@ -116,7 +111,6 @@ class Form extends CI_Controller {
 
 			$data = null;
 			
-
 			if (!empty($_SESSION['error'])){     
 				$data['error'] = $_SESSION['error']; 
 				unset($_SESSION['error']);
@@ -140,10 +134,10 @@ class Form extends CI_Controller {
 	public function validation() {
 
 
-		$user_name = @$this->input->post('user_name',true) ?:null;
-		$user = @$this->input->post('user',true) ?:null;
-		$pass = @$this->input->post('pass',true) ?:null;
-		$compass = @$this->input->post('compass',true) ?:null;
+		$user_name = $this->input->post('user_name',true) ?:null;
+		$user = $this->input->post('user',true) ?:null;
+		$pass = $this->input->post('pass',true) ?:null;
+		$compass = $this->input->post('compass',true) ?:null;
 
 		$this->Form_model->log_get($user);
 		$this->load->model('Form_model');
@@ -192,9 +186,9 @@ class Form extends CI_Controller {
 
 		if(!empty($_POST['btn_submit'])){
 
-			$user_name = @$this->input->post('user_name',true);
-			$user = @$this->input->post('user',true);
-			$pass = @$this->input->post('pass',true);
+			$user_name = $this->input->post('user_name',true);
+			$user = $this->input->post('user',true);
+			$pass = $this->input->post('pass',true);
 			$now_date = date("Y-m-d H:i:s");
 
 			$data = [
@@ -259,9 +253,9 @@ class Form extends CI_Controller {
 
 			if (!empty($this->input->post('change'))){
 
-			$user_name = @$this->input->post('user_name');
-			$user = @$this->input->post('user');
-			$pass = @$this->input->post('pass');
+			$user_name = $this->input->post('user_name');
+			$user = $this->input->post('user');
+			$pass = $this->input->post('pass');
 			$updated_at = date("Y-m-d H:i:s");
 
 			$data = [
@@ -279,9 +273,9 @@ class Form extends CI_Controller {
 
 			if (!empty($this->input->post('delete'))){
 
-				$user_name = @$this->input->post('user_name');
-				$user = @$this->input->post('user');
-				$pass = @$this->input->post('pass');
+				$user_name = $this->input->post('user_name');
+				$user = $this->input->post('user');
+				$pass = $this->input->post('pass');
 
 				$data = [
 					'user_name' => $user_name,
