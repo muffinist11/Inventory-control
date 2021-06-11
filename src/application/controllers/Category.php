@@ -77,9 +77,9 @@ class Category extends CI_Controller
   // 削除項目の選択
   public function category_delete()
   {
-    $id = $this->input->get('category_id');
-    if (!empty($id) && is_numeric($id)) {
-      $data['categories'] = $this->Category_model->fetch_one_row($id);
+    $category = $this->input->get('category_id');
+    if (!empty($category)) {
+      $data['categories'] = $this->Category_model->fetch_one_row($category);
       if (!empty($data['categories'])) {
         $data['category_name'] = $this->Category_model->fetch_all_rows();
         $this->load->view('category_delete_view', $data);
@@ -97,9 +97,9 @@ class Category extends CI_Controller
   // 削除の実行
   public function delete_category_item()
   {
-    if (!empty($id = $this->input->post('category_id', true))) {
-      $id = $this->input->post('category_id');
-      if ($this->Category_model->delete_row($id)) {
+    if (!empty($category = $this->input->post('category_id', true))) {
+      $category = $this->input->post('category_id');
+      if ($this->Category_model->delete_row($category) && $this->Category_model->delete_stocks($category)) {
         $_SESSION['success_message'] = '削除しました。';
       }
       header('Location: /Category');

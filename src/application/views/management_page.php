@@ -18,7 +18,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- jQuery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
+
 <body class="hold-transition sidebar-mini">
+<?php var_dump($_GET);?>
 <div class="wrapper">
 
   <!--　ヘッダー -->
@@ -30,41 +32,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
     </ul>
   <!-- ログアウト -->
     <div class="navbar-nav ml-auto">
-      <a href="" class="">ログアウト</a>
+      <a href="/" class="">ログアウト</a>
     </div>
   </nav>
 
-  <?php include('side.php'); ?>
-  <!--
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <a href="" class="brand-link">
-      <span class="brand-text font-weight-light">カテゴリー</span>
-    </a>
-      <div class="sidebar">
-        <nav class="mt-2">
-          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-            <li class="nav-item menu-open">
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="" class="nav-link active">
-                    <i class="far fa-circle nav-icon"></i>
-                      <p>在庫</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                      <p>備品</p>
-                  </a>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </nav>
-      </div>
-  </aside> -->
-
   <!-- body --> 
+ 
     <div class="content-wrapper">
       <div class="content-header">
         <h1 class="text-center">管理画面</h1>
@@ -78,6 +51,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <div class="text-right ml-auto">
             <form action="/management/additional_page" method="post">
             <button type="submit" class="btn btn-primary">新規追加</button>
+            <input type="hidden" name="category_id" value="<?= $_GET['category_id']; ?>">
             </form>
           </div>
         </div>
@@ -89,6 +63,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <table id="" class="table">
         <thead>
           <tr>
+            <th>カテゴリ</th>
             <th>名前</th>
             <th>数量</th>
             <th>保管場所</th>
@@ -100,6 +75,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <tbody>
             <?php foreach ($result as $value) {?>
             <tr class="target-area">
+              <td><?= $value['category_id']?></td>
               <td><?= $value['title']?></td>
               <td><?= $value['num']?></td>
               <td><?= $value['place']?></td>
@@ -109,6 +85,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <form action="/management/detail_page" method="post">
                 <button type="submit" class="btn btn-primary">詳細・編集</button>
                     <input type="hidden" name="id" value="<?= $value['id']; ?>">
+                    <input type="hidden" name="category_id" value="<?= $value['category_id']; ?>">
                     <input type="hidden" name="title" value="<?= $value['title']; ?>">
                     <input type="hidden" name="num" value="<?= $value['num']; ?>">
                     <input type="hidden" name="place" value="<?= $value['place']; ?>">

@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="../dist/css/adminlte.min.css">
 </head>
 <body class="hold-transition sidebar-mini">
+<?php var_dump($_GET);?>
   <div class="wrapper">
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper" style="margin-left: 0px;">
@@ -57,7 +58,7 @@
                   <div class="card-body">
                     <a class="btn btn-primary btn-sm" href="/category">キャンセル</a>
                     <input style="width: 95px;" class="btn btn-primary btn-sm" type="submit" name="btn_submit" value="削除">
-                    <input type="hidden" name="category_id" value="<?php echo $categories['id']; ?>">
+                    <input type="hidden" name="category_id" value="<?php echo $categories['category']; ?>">
                   </div>
                 </div>
                 <!-- /.card -->

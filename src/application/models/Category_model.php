@@ -23,19 +23,25 @@ class Category_model extends CI_Model
     }
     
     // 指定されたIDの取得
-    public function fetch_one_row($id)
+    public function fetch_one_row($category)
     {
-        return $this->db->where('id', $id)
+        return $this->db->where('category', $category)
             ->select('id,user_id,category')
             ->get('categories')
             ->row_array();
     }
 
     // 指定されたIDの削除
-    public function delete_row($id)
+    public function delete_row($category)
     {
-        return $this->db->where('id', $id)
+        return $this->db->where('category', $category)
             ->delete('categories');
+    }
+
+    public function delete_stocks($category)
+    {
+        return $this->db->where('category_id', $category)
+            ->delete('stocks');
     }
     
 }

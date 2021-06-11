@@ -182,22 +182,17 @@ class Form extends CI_Controller {
 	}
 
 	public function db_act(){
-
-
 		if(!empty($_POST['btn_submit'])){
-
 			$user_name = $this->input->post('user_name',true);
 			$user = $this->input->post('user',true);
 			$pass = $this->input->post('pass',true);
 			$now_date = date("Y-m-d H:i:s");
-
 			$data = [
 				'user_name' => $user_name,
 				'user' => $user,
 				'pass' => $pass,
 				'created_at' => $now_date
 			];
-
 			$this->Form_model->insert_row($data);
 
 			$this->load->view('touroku');
@@ -212,7 +207,6 @@ class Form extends CI_Controller {
 
 			$this->Form_model->table_row();
 			$data['result'] = $this->Form_model->table_row();
-
 			// pagination
 			$this->load->library('pagination');
 			$config ['base_url'] = "/form/users_edit";
@@ -226,8 +220,6 @@ class Form extends CI_Controller {
 			$config ['num_tag_close'] = '</div></li>';
 			$config ['next_tag_open'] = '<li class="page-item"><div class="page-link">';
 			$config ['next_tag_close'] = '</div></li>';
-
-
 			$this->pagination->initialize($config);
 
 			$this->load->view('users_edit',$data);

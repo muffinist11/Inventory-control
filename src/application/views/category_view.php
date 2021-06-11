@@ -20,6 +20,7 @@
 </head>
 
 <body class="hold-transition sidebar-mini">
+
     <div class="wrapper">
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper" style="margin-left: 0px;">
@@ -75,11 +76,11 @@
                                                 <?php foreach ($category_name as $value) : ?>
                                                     <tr>
                                                         <td>
-                                                            <?php echo $value['category']; ?>
+                                                            <?php echo $value['category'];?>
                                                         </td>
                                                         <td>
-                                                            <a class="btn btn-primary btn-sm" href="#">選択</a>
-                                                            <a class="btn btn-primary btn-sm" href="/category/category_delete?category_id=<?php echo $value['id']; ?>">削除</a>
+                                                            <a class="btn btn-primary btn-sm" href="/Management/index?category_id=<?php echo $value['category']; ?>">選択</a>
+                                                            <a class="btn btn-primary btn-sm" href="/category/category_delete?category_id=<?php echo $value['category']; ?>">削除</a>
                                                         </td>
                                                     </tr>
                                                 <?php endforeach; ?>
