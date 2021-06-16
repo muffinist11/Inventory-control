@@ -1,15 +1,29 @@
-# ZaikoAdmin
+# Inventory Control
 
-外部案件を想定した在庫管理システムです
+## 概要
+外部案件を想定した在庫管理システムです。オフィスなどで発注した在庫の名前、数量、保管場所、日時、備考を管理する事ができます。
+、、、
+→CodeIgniterによるPHPのCRUD開発
+→ログイン・会員登録機能
+→在庫管理機能
+→JavaScriptによる検索機能
+→adminLTE使用
+→Illustratorによるロゴ制作
+、、、
 
-管理者権限ログインはusers table の　id=1　に該当するユーザーに設定
+<br>
 
-・CodeIgniterによるPHPのCRUD開発
-・ログイン・会員登録機能
-・在庫管理機能
-・JavaScriptによる検索機能
-・adminLTE使用
-・Illustratorによるロゴ制作
+## 環境構築
+```
+→ apache 
+→ PHP 7.4.4
+→ Mysql(MariaDB)
+→ Codeigniter 3.2.0
+```
+
+<br>
+
+
 
 <img src="src/img/login.png" width="450px"><br>
 ログイン画面<br>
