@@ -48,7 +48,7 @@
                 </div><!-- /.container-fluid -->
             </section>
             <!-- Main content -->
-            <form action="/Category/add_category" method="post">
+            <form action="" method="post">
                 <section class="content">
                     <div class="container-fluid">
                         <div class="row">

@@ -54,7 +54,4 @@ class Form_model extends CI_Model
         $this->db->where('id', $id);
         $this->db->update('users',array('delete_flag' => 1));           
     }
-
-    
-
 }

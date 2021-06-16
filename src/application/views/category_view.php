@@ -20,7 +20,6 @@
 </head>
 
 <body class="hold-transition sidebar-mini">
-
     <div class="wrapper">
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper" style="margin-left: 0px;">

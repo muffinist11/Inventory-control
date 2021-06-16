@@ -21,17 +21,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <div class="card-body">
 <!--戻る-->
   <div class="row">
-  <a href="/Category/index">戻る</a>
+  <a href="/Management/index?category_id=<?= $_POST['category_id']; ?>">戻る</a>
   </div>
 <!--追加-->  
 　<div class="card card-primary">
     <div class="card-header">
       <h3 class="card-title">新規登録</h3>
     </div>
-    <?php var_dump($_POST); ?>
+    
     <form action="/Management/db_add" method="post">
       <div class="card-body">
-      <input type="hidden" name="category_id" value="<?= $_POST['category_id']; ?>">
+        <input type="hidden" name="category_id" value="<?= $_POST['category_id']; ?>">
         <div class="form-group">
           <label for="">名前</label>
           <input type="text" class="form-control" name="title" required>

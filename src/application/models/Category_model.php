@@ -5,7 +5,6 @@ class Category_model extends CI_Model
 {
     public function __construct()
     {
-
         $this->load->database();
     }
     // データベースにデータ登録
@@ -42,6 +41,16 @@ class Category_model extends CI_Model
     {
         return $this->db->where('category_id', $category)
             ->delete('stocks');
+    }
+
+    // 重複のチェック
+    public function category_check($name){
+         // クエリビルダクラス（抽出指示）
+      $query=$this->db->get_where('categories',array('category' => $name));
+         // クエリで返された行数をnum_rowsで返す
+      if($query->num_rows() === 1){
+        return true;
+      }
     }
     
 }

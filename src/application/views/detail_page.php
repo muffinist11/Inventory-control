@@ -1,82 +1,104 @@
 <!DOCTYPE html>
-<!--
-This is a starter template page. Use this page to start your new project from
-scratch. This page gets rid of all links and provides the needed markup only.
--->
-<html lang="ja">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>編集・詳細</title>
-
-  <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="../dist/css/adminlte.min.css">
-</head>
-<body class="hold-transition detail_page">
-<?php var_dump($_POST);?>
-<div class="wrapper">
-<div class="card-body">
-<!--戻る-->
-    <div class="row">
-    <p><a href="/Category/index">戻る</a></p>
-    </div>
-<!--編集-->     
-    <div class="card card-primary">
-        <div class="card-header">
-            <h3 class="card-title">編集・詳細</h3>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Inventory Control</title>
+    <link rel="shortcut icon" href="../img/favicon.ico">
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+    <style>
+        .item-box,
+        .card{
+            margin:0 auto;
+        }
+    </style>
+  </head>
+  <body>
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>User Edit</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="/form/admin_page">Home</a></li>
+            </ol>
+          </div>
         </div>
-        <form action="/Management/update_row" method="post">
-        <div class="card-body">
-            <!-- <div><?php if(!empty($_POST['id'])){echo $_POST['id'];}?></div> -->
-            <div class="form-group">
-                <input type="hidden" class="form-control" name="category_id" value="<?php if(!empty($_POST['category_id'])){echo $_POST['category_id'];}?>">
-            </div>
-            <div class="form-group">
-                <label for="">名前</label>
-                <input type="text" class="form-control" name="title" value="<?php if(!empty($_POST['title'])){echo $_POST['title'];}?>">
-            </div>
-            <div>
-                <label for="">数量</label>
-                <div class="input-group mb-3">
-                <input type="number" class="form-control" name="num" value="<?php if(!empty($_POST['num'])){echo $_POST['num'];}?>">
-                    <div class="input-group-append">
-                        <button class="btn btn-primary" type="button" id="button-addon2">変更</button>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="">保存場所</label>
-                <input type="text" class="form-control" name="place" value="<?php if(!empty($_POST['place'])){echo $_POST['place'];}?>">
-            </div>
-            <div class="form-group">
-                <label for="">購入日</label>
-                <input type="date" class="form-control" name="pc" value="<?php if(!empty($_POST['pc'])){echo $_POST['pc'];}?>">
-            </div>
-            <div class="form-group pb-3">
-                <label for="Textarea">備考</label>
-                <textarea class="form-control" id="Textarea" rows="5" name="etc" value=""><?php if(!empty($_POST['etc'])){echo $_POST['etc'];}?></textarea>
-                <div class="invalid-feedback"></div>
-            </div>
-            <input type="hidden" name="id" value="<?= $_POST['id']; ?>">
-            <div class="text-center">
-                <input type="submit" name="change" class="btn btn-primary" value="編集登録">
-                <input type="submit" name="delete" class="btn btn-danger"  value="削除">
-                <!-- <input type="hidden" name="stock_id" value="<?php echo $stocks['id']; ?>"> -->
-            </div>
-        </form>
-    </div>
-</div>
-</div>
+      </div>
 
-<!-- jQuery -->
-<script src="../plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
-<script src="../dist/js/adminlte.min.js"></script>
-</body>
+      <div class="search">
+        <!-- Main content -->
+        <section class="content">
+            <h2 class="text-center display-4">Users</h2>                                   
+        </section>
+      </div>
+    </section>
+
+    <div class="register-box" style="margin:0 auto;">
+      <div class="register-logo">
+          <img src="../img/giaicon.png" alt="ログインロゴ" style="width: 350px; height: 150px;">
+      </div>
+      <div class="card">
+        <div class="card-body register-card-body">
+          <p class="login-box-msg">ユーザー編集</p>
+          <form method="post">
+            <input type="hidden" name="id" value="<?php echo $_POST['id']; ?>">
+            <p>名前</p>
+            <div class="input-group mb-3">
+              <input type="text" name="user_name" class="form-control" value="<?php if(!empty($_POST['user_name'])){
+                  echo $_POST['user_name'];}?>">
+              <div class="input-group-append">
+                  <div class="input-group-text">
+                    <span class="fas fa-user"></span>
+                  </div>
+              </div>
+            </div>
+            <p>ユーザーID</p>
+            <div class="input-group mb-3">
+              <input type="text" name="user" class="form-control" value="<?php if(!empty($_POST['user'])){
+                echo $_POST['user'];}?>">
+              <div class="input-group-append">
+                <div class="input-group-text">
+                  <span class="fas fa-address-card"></span>
+                </div>
+              </div>
+            </div>
+            <p>パスワード</p>
+            <div class="input-group mb-3">
+              <input type="text" name="pass"  class="form-control" value="<?php if(!empty($_POST['pass'])){
+                echo $_POST['pass'];}?>">
+              <div class="input-group-append">
+                <div class="input-group-text">
+                  <span class="fas fa-lock"></span>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="row">
+              <div class="item-box">
+                <input type="submit" name="change"  class="btn btn btn-app bg-success" value="更新">
+                <input type="submit" name="delete"  class="btn btn-app bg-danger" value="削除">
+                <input type="submit" name="back"  class="btn btn-app bg-success" value="戻る">         
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>       
+    </div>    
+    <!-- jQuery -->
+    <script src="../../plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="../../dist/js/adminlte.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+  </body>
 </html>

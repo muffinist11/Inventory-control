@@ -13,6 +13,7 @@ class Management_model extends CI_Model
     {
         $this->db->insert('stocks', $data);
     }
+    
 // 登録データの取得
     public function fetch_all($limit = null){
         !empty($limit) ? $this->db->limit($limit) : false;
@@ -28,6 +29,7 @@ class Management_model extends CI_Model
             ->get('categories')
             ->result_array();
     }
+
 //登録データの編集・更新
     public function update_row($data){
     $this->load->database();
@@ -41,6 +43,7 @@ class Management_model extends CI_Model
         ->get('stocks')
         ->row_array();
     }
+    
     //指定されたIDの削除
     public function delete_row($id)
     {

@@ -20,7 +20,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 </head>
 
 <body class="hold-transition sidebar-mini">
-<?php var_dump($_GET);?>
 <div class="wrapper">
 
   <!--　ヘッダー -->
@@ -37,7 +36,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
   </nav>
 
   <!-- body --> 
- 
     <div class="content-wrapper">
       <div class="content-header">
         <h1 class="text-center">管理画面</h1>
@@ -82,7 +80,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <td><?= $value['pc']?></td>
               <td><?= $value['updated_at']?></td>
               <td>
-                <form action="/management/detail_page" method="post">
+                <form action="/management/detail_page?category_id=<?= $value['category_id']; ?>" method="post">
                 <button type="submit" class="btn btn-primary">詳細・編集</button>
                     <input type="hidden" name="id" value="<?= $value['id']; ?>">
                     <input type="hidden" name="category_id" value="<?= $value['category_id']; ?>">
@@ -99,7 +97,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       </table>
     </div>
   
-       
+
 <script>
   (function(document) {
     'use strict';

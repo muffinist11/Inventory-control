@@ -18,14 +18,14 @@ class Category extends CI_Controller
     // データベースからカテゴリー全体を持ってくる
     $data['category_name'] = $this->Category_model->fetch_all_rows();
     // セッションで保持した情報を$dataに代入したのちにアンセット
-      if (!empty($_SESSION['success_message'])) {
-        $data['success_message'] = $_SESSION['success_message'];
-        unset($_SESSION['success_message']);
-      }
-      if (!empty($_SESSION['error_message'])) {
-        $data['error_message'] = $_SESSION['error_message'];
-        unset($_SESSION['error_message']);
-      }
+    if (!empty($_SESSION['success_message'])) {
+      $data['success_message'] = $_SESSION['success_message'];
+      unset($_SESSION['success_message']);
+    }
+    if (!empty($_SESSION['error_message'])) {
+      $data['error_message'] = $_SESSION['error_message'];
+      unset($_SESSION['error_message']);
+    }
     // VIEWに$dataを渡す
     $this->load->view('category_view', $data);
   }
@@ -49,22 +49,32 @@ class Category extends CI_Controller
         $error_message[] = '内容を入力してください';
       }
       if (empty($error_message)) {
-        $data = [
-          'category' => $name,
-          'user_id' => $_SESSION['loguser'],
-          'created_at' => date("Y-m-d H:i:s")
-        ];
-        $success_message = null;
-        if ($this->Category_model->insert_row($data)) {
-          $_SESSION['success_message'] = 'カテゴリーを追加しました。';
+        $res = $this->Category_model->category_check($name);
+        // $resにtrueが入ってきているのかを確認
+        if ($res) {
+          $error_message[] = '追加のカテゴリーはデータベースに登録されています。';
+          $_SESSION['error_message'] = $error_message;
+          $data ['error_message']= $_SESSION['error_message'];
+          unset($_SESSION['error_message']);
+          // $this->load->view('add_category_view', $data);
         } else {
-          $_SESSION['error_message'] = 'カテゴリーの追加に失敗しました。';
+          $data = [
+            'category' => $name,
+            'user_id' => $_SESSION['loguser'],
+            'created_at' => date("Y-m-d H:i:s")
+          ];
+          $success_message = null;
+          if ($this->Category_model->insert_row($data)) {
+            $_SESSION['success_message'] = 'カテゴリーを追加しました。';
+          } else {
+            $_SESSION['error_message'] = 'カテゴリーの追加に失敗しました。';
+          }
         }
       } else {
-        $_SESSION['error_message'] = $error_message;
+        $data['error_message'] = $error_message;
       }
-      $data = $_SESSION;
-      unset($_SESSION['success_message']);
+      // $data = $_SESSION;
+      // unset($_SESSION);
     }
     $this->load->view('add_category_view', $data);
   }
