@@ -16,45 +16,45 @@
   </head>
 
   <body class="hold-transition login-page">
-  <div class="login-box">
+    <div class="login-box">
       <div class="login-logo">
           <img src="../img/giaicon.png" alt="ログインロゴ" style="width: 250px; height: 110px;">
       </div>
-    <!-- /.login-logo -->
-    <div class="card">
-        <div class="card-body login-card-body">
-          <p class="login-box-msg">管理者サインイン</p>
-          <p><a href="/form">戻る</a></p>
-          <form action="admin_check" method="post">
-              <!-- 管理者かの確認 -->
-              <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="master id" name="user" required="required">
-                <div class="input-group-append">
-                    <div class="input-group-text">
-                        <i class="fas fa-user-cog"></i>
-                    </div>
+      <!-- /.login-logo -->
+      <div class="card">
+          <div class="card-body login-card-body">
+            <p class="login-box-msg">管理者サインイン</p>
+            <p><a href="/form">戻る</a></p>
+            <form action="admin_check" method="post">
+                <!-- 管理者かの確認 -->
+                <div class="input-group mb-3">
+                  <input type="text" class="form-control" placeholder="master id" name="user" required="required">
+                  <div class="input-group-append">
+                      <div class="input-group-text">
+                          <i class="fas fa-user-cog"></i>
+                      </div>
+                  </div>
                 </div>
-              </div>
-              <div class="input-group mb-3">
-                <input type="password" class="form-control" placeholder="Password" name="pass" required="required">
-                <div class="input-group-append">
-                    <div class="input-group-text">
-                      <span class="fas fa-lock"></span>
-                    </div>
+                <div class="input-group mb-3">
+                  <input type="password" class="form-control" placeholder="Password" name="pass" required="required">
+                  <div class="input-group-append">
+                      <div class="input-group-text">
+                        <span class="fas fa-lock"></span>
+                      </div>
+                  </div>
                 </div>
-              </div>
-              <div class="row">
-              <!-- /.col -->
-                <div class="col-4">
-                  <button type="submit" class="btn btn-primary btn-block" name=btn_submit>Sign In</button>
+                <div class="row">
+                <!-- /.col -->
+                  <div class="col-4">
+                    <button type="submit" class="btn btn-primary btn-block" name=btn_submit>Sign In</button>
+                  </div>
+                <!-- /.col -->
                 </div>
-              <!-- /.col -->
-              </div>
-          </form>
-        </div>
-        <!-- /.login-card-body -->
+            </form>
+          </div>
+          <!-- /.login-card-body -->
+      </div>
     </div>
-  </div>
   <!-- /.login-box -->
 
     <!-- jQuery -->
