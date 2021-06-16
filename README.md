@@ -23,20 +23,53 @@
 
 <br>
 
+## サイト画像
+| ログイン画面 |
+:--:|
+| ![ログイン画面](src/img/login.png) |
+
+| カテゴリ管理ページ |
+:--:|
+| ![カテゴリ管理ページ](src/img/category.png) |
+
+| 在庫管理ページ |
+:--:|
+| ![在庫管理ページ](src/img/control.png) |
+
+| 編集ページ |
+:--:|
+| ![編集ページ](src/img/edit.png) |
+
+| 管理者権限ページ |
+:--:|
+| ![管理者権限ページ](src/img/admincontrol.png) |
+
+| ユーザー編集ページ |
+:--:|
+| ![ユーザー編集ページ](src/img/usersedit.png) |
+
+| 在庫管理者ページ |
+:--:|
+| ![在庫管理者ページ](src/img/useradd.png) |
 
 
-<img src="src/img/login.png" width="450px"><br>
-ログイン画面<br>
-<img src="src/img/category.png" width="450px"><br>
-カテゴリ管理ページ<br>
-<img src="src/img/control.png" width="450px"><br>
-在庫管理ページ<br>
-<img src="src/img/edit.png" width="450px"><br>
-編集ページ<br>
-<img src="src/img/admincontrol.png" width="450px"><br>
-管理者権限ページ<br>
-<img src="src/img/usersedit.png" width="450px"><br>
-ユーザー編集ページ<br>
-<img src="src/img/useradd.png" width="450px"><br>
-在庫管理者追加ページ
+<br>
 
+## 主な機能
+```
+<フロント>
+→ ログインページ
+→ 商品カテゴリー管理ページ
+→ カテゴリ編集ページ
+→ カテゴリ新規追加ページ
+→ 発注品管理ページ
+→ 発注品編集ページ
+→ 発注品新規追加ページ
+→ ログアウト機能
+
+<管理者ページ>
+→ ユーザー一覧ページ
+→ 管理者編集ページ
+→ 管理者登録ページ
+→ ユーザー検索機能
+```
